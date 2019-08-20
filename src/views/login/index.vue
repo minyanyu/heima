@@ -73,8 +73,11 @@ export default {
           }).then(res => {
             localStorage.setItem('user-info', JSON.stringify(res.data.data))
             this.$router.push('/home')
-          }).catch(res => {
-            alert('您输入的账号或密码不正确')
+          }).catch(() => {
+            this.$message({
+              message: '警告哦，这是一条警告消息',
+              type: 'warning'
+            })
           })
         }
       })
