@@ -2,7 +2,7 @@
   <div  class = 'login'>
      <el-card class = 'card'>
        <img src="../../assets/img/logo_index.png" alt="">
-       <el-form :model = 'formData' :rules="rules"  ref = 'login'>
+       <el-form :model = 'formData' :rules="rules"  ref = 'login' status-icon>
          <el-form-item prop='mobile'>
            <el-input style = 'margin-top:30px' placeholder="请输入手机号" v-model = 'formData.mobile'></el-input>
          </el-form-item>
@@ -73,6 +73,8 @@ export default {
           }).then(res => {
             localStorage.setItem('user-info', JSON.stringify(res.data.data))
             this.$router.push('/home')
+          }).catch(res => {
+            alert('您输入的账号或密码不正确')
           })
         }
       })
