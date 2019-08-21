@@ -71,13 +71,9 @@ export default {
             url: '/authorizations',
             data: this.formData
           }).then(res => {
-            localStorage.setItem('user-info', JSON.stringify(res.data.data))
+            console.log(res)
+            localStorage.setItem('user-info', JSON.stringify(res.data))
             this.$router.push('/home')
-          }).catch(() => {
-            this.$message({
-              message: '警告哦，这是一条警告消息',
-              type: 'warning'
-            })
           })
         }
       })
