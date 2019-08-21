@@ -13,12 +13,9 @@
 </template>
 
 <script>
-import comAside from '../../components/home/aside'
-import Header from '../../components/home/header'
 export default {
   components: {
-    'com-aside': comAside,
-    'com-header': Header
+
   }
 }
 </script>

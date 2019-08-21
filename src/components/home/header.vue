@@ -6,15 +6,15 @@
     </el-col>
     <el-col :span="3" class="right">
       <img src="../../assets/img/avatar.jpg" alt />
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click"  @command="handleCommand">
         <span class="el-dropdown-link">
-          下拉菜单
+          {{user.name}}
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>个人信息</el-dropdown-item>
-          <el-dropdown-item>git地址</el-dropdown-item>
-          <el-dropdown-item>退出</el-dropdown-item>
+          <el-dropdown-item command='account'>个人信息</el-dropdown-item>
+          <el-dropdown-item command='git'>git地址</el-dropdown-item>
+          <el-dropdown-item command='out'>退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
@@ -23,10 +23,37 @@
 
 <script>
 export default {
-  name: '',
-  components: {},
   data () {
-    return {}
+    return {
+      user: {
+
+      }
+    }
+  },
+  methods: {
+    get () {
+      let userInfo = window.localStorage.getItem('user-info')
+      let token = userInfo ? JSON.parse(userInfo).token : null
+      token && this.$axios({
+        url: '/user/profile',
+        headers: { 'Authorization': `Bearer ${token}` }
+      }).then(res => {
+        this.user = res.data.data
+      })
+    },
+    handleCommand (command) {
+      if (command === 'account') {
+        this.$router.push('./home/account')
+      } else if (command === 'git') {
+        window.location.href = 'https://github.com/minyanyu/minyanyu.github.io'
+      } else {
+        this.$router.push('/login')
+        window.localStorage.clear()
+      }
+    }
+  },
+  created () {
+    this.get()
   }
 }
 </script>
