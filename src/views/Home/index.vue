@@ -7,7 +7,9 @@
       <el-header>
         <com-header></com-header>
       </el-header>
-      <el-main>主要</el-main>
+      <el-main style = 'padding:0 0'>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
