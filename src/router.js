@@ -11,18 +11,27 @@ export default new Router({
       redirect: '/home'
     },
     {
+      path: '/login',
+      component: Login
+    },
+    {
       path: '/home',
       component: Home,
       children: [
         {
           path: '',
           component: Main
+        },
+        {
+          path: '/home/comment', // 评论列表
+          component: () => import('./views/commont') // 按需加载的写法
+        },
+        {
+          path: '/home/material', // 评论列表
+          component: () => import('./views/material') // 按需加载的写法
         }
       ]
-    },
-    {
-      path: '/login',
-      component: Login
     }
+
   ]
 })

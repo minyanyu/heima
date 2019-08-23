@@ -1,6 +1,10 @@
 import axios from 'axios'
 import { Message } from 'element-ui' // 引入message模块
+import JSONBig from 'json-bigint'
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
+axios.defaults.transformResponse = [function (data) {
+  return data ? JSONBig.parse(data) : {} // 处理大数字
+}]
 axios.interceptors.request.use(function (config) {
   //   console.log(config)
   // 在发起请求请做一些业务处理

@@ -48,7 +48,7 @@ export default {
 
 <style lang = 'less' scoped>
 .aside {
-  height: 100vh;
+  height:100%;
   background-color: #323745;
   .pic {
     background-color: #2e2f32;
