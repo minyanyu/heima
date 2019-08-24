@@ -29,6 +29,14 @@ export default new Router({
         {
           path: '/home/material', // 评论列表
           component: () => import('./views/material') // 按需加载的写法
+        },
+        {
+          path: '/home/articles', // 内容列表
+          component: () => import('./views/articles') // 按需加载的写法
+        },
+        {
+          path: '/home/publish', // 内容列表
+          component: () => import('./views/publish') // 按需加载的写法
         }
       ]
     }

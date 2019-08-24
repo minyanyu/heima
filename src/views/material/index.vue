@@ -12,7 +12,7 @@
           <el-card class="card" v-for="item in list" :key="item.id">
             <img :src="item.url" alt />
             <el-row type="flex" justify="space-around" style="font-size:20px">
-              <i class="el-icon-star-on" @click="collect(item)"></i>
+              <i class="el-icon-star-on" @click="collect(item)" :style="{color: item.is_collected ? 'red': ''}"></i>
               <i class="el-icon-delete" @click="del(item)"></i>
             </el-row>
           </el-card>
